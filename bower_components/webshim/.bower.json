@@ -1,0 +1,13 @@
+{
+  "name": "webshim",
+  "homepage": "https://github.com/aFarkas/webshim",
+  "_release": "1c0183c60d",
+  "_resolution": {
+    "type": "commit",
+    "commit": "1c0183c60d0c615217d856ad35444e9c9990615b"
+  },
+  "_source": "git://github.com/aFarkas/webshim.git",
+  "_target": "1c0183c60d0c615217d856ad35444e9c9990615b",
+  "_originalSource": "git://github.com/aFarkas/webshim.git",
+  "_direct": true
+}

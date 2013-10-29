@@ -1,0 +1,19 @@
+{
+  "name": "jquery.query.js",
+  "version": "2.1.7",
+  "main": "jquery.query.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "gitHead": "db7b2d2ee1f204433f97d585a1e23b7ff1e4eb5c",
+  "readme": "jquery.query.js\n===============\n",
+  "readmeFilename": "README.md",
+  "_id": "jquery.query.js@2.1.7",
+  "description": "jquery.query.js ===============",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/plasticine/jquery.query.js.git"
+  }
+}

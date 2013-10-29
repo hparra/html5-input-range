@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<title>All native implementations of HTML5 input[type="range"] are broken</title>
+	<script src="bower_components/webshim/src/extras/modernizr-custom.js"></script>
+	<script src="bower_components/jquery/jquery.js"></script>
+	<script src="bower_components/jquery.query.js/jquery.query.js"></script>
+	<script src="bower_components/webshim/src/polyfiller.js"></script>
+	<script src="input-range.js"></script>
+</head>
+<body>
+	<h1>All native implementations of HTML5 input[type="range"] are broken</h1>
+	
+	<p>Tested input[type="range"] on modern browsers: Firefox 24, Chrome 30, Safari 6, and IE 10. Behavior differed in all four.</p>
+
+	<h2>Test</h2>
+	<form>
+		<input class="test" type="range" value="1" min="1" max="10">
+		<button type="reset">Reset</button>
+		<label>input events:</label>
+		<input id="input-event-count" type="text" value="0" size="3">
+		<label>change events:</label>
+		<input id="change-event-count" type="text" value="0" size="3">
+	</form>
+
+	<h2>Test Variations</h2>
+	<p>Reload this page using the one of the following:</p>
+	<ul>
+		<li><a href="?">Vanilla HTML5 (default)</a></li>
+		<li><a href="?webshim=">Webshim Lib polyfill (corrects most issues)</a></li>
+		<li><a href="?webshim=replaceUI">Webshim Lib polyfill w/replaceUI</a></li>
+	</ul>
+	
+	<h2>Expected Behavior</h2>
+	<ul>
+		<li><em>input</em> fires on keydown or mousedown/move and only if (potential) value changes</li>
+		<li><em>change</em> fires on keyup or mouseup and only if value changes</li>
+	</ul>
+
+	<h2>Issues</h2>
+	<ul>
+		<li>click: Safari 6 does not focus input[type="range"] element</li>
+		<li>click: Firefox 24 fires <em>input</em> needlessly</li>
+		<li>mousemove: IE 10 fires <em>change</em> instead of <em>input</em></li>
+		<li>mousemove: IE 10 does not fire <em>input</em></li>
+		<li>mousemove: Chrome 30 and Safari 6 fire both <em>input</em> and <em>change</em></li>
+		<li>mousemove: Firefox 24 and Safari 6 fire <em>input</em> even if there is no step</li>
+		<li>mousemove: Firefox 24 continues to fire <em>input</em> even when already at min/max</li>
+		<li>keydown: Chrome 30 and Safari 6 only fires <em>change</em></li>
+		<li>keydown: Firefox 24 only fires <em>input</em>, continuing to fire even when already at min/max</li>
+	</ul>
+
+	<h2>Comments</h2>
+	<p>Whether element should continue to fire <em>input</em> while at min/max is up to debate, but browsers should agree on behavior.</p>
+	<p>The next version (1.11.3) of the <a href="http://afarkas.github.io/webshim/demos/">Webshim Lib</a> fixes the most pressing issues. See <a href="https://github.com/aFarkas/webshim/issues/297">Issue #297</a> and associated commit. Special thanks to <a href="https://github.com/aFarkas">Alexander Farkas</a> for (very) actively developing this awesome polyfill library.</p>
+
+	<h2>TODOs</h2>
+	<ul>
+		<li>Test Android browsers (yikes)</li>
+		<li>Test Safari 7</li>
+		<li>Test IE 11</li>
+		<li>(Do we need to test Opera?)</li>
+		<li>Check/submit bug reports to browsers (chromium, gecko, trident)</li>
+		<li>Check/submit bug reports to standards bodies (hixie)</li>
+		<li>Discuss UI implementations, styling support</li>
+	</ul>
+
+	<span>-- Hector Parra, <a href="https://twitter.com/hgparra">@hgparra</a></span>
+
+</head>
+</body>
+</html>

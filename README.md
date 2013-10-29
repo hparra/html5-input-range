@@ -1,0 +1,1 @@
+See http://hparra.github.io/html5-input-range/
